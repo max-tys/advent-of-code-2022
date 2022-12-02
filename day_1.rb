@@ -1,6 +1,6 @@
 # convert raw input into array of strings (or 'sacks')
 # each sack contains the calorific values of the snacks
-sacks = File.read('day_1_data.txt').split("\n\n")
+sacks = File.read('input/day_1.txt').split("\n\n")
 
 # transform each string into an integer sum of the calorific values
 sacks.map! do |sack|
