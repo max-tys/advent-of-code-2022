@@ -93,7 +93,7 @@ class RPS
   end
 end
 
-guide = File.read('day_2_data.txt')
+guide = File.read('input/day_2.txt')
 rps = RPS.new(guide)
 puts "Your total score in part 1 is #{rps.tournament_score(part: 1)}."
 puts "Your total score in part 2 is #{rps.tournament_score(part: 2)}."
