@@ -1,4 +1,4 @@
-# Parse the stacks drawing
+# Converts the stacks diagram into a hash
 def parse_stacks(stack_input)
   lines = stack_input.map(&:chars)
 
@@ -16,11 +16,12 @@ end
 
 # Part 1: CraneMover 9000 moves crates one at a time
 def move_singly!(move, stacks)
-  move = move.scan(/(\d+)/).flatten.map(&:to_i)
+  tokens = move.split(' ')
+  n, src, dst = [tokens[1], tokens[3], tokens[5]].map(&:to_i)
   
-  move[0].times do
-    item = stacks[move[1]].shift
-    stacks[move[2]].prepend item
+  n.times do
+    item = stacks[src].shift
+    stacks[dst].prepend item
   end
 end
 
@@ -33,11 +34,11 @@ puts "Part 1: When using CrateMover 9000, the crates on top of each stack are '#
 
 # Part 2: CraneMover 9001 moves multiple crates at once
 def move_together!(move, stacks)
-  move = move.scan(/(\d+)/).flatten.map(&:to_i)
+  tokens = move.split(' ')
+  n, src, dst = [tokens[1], tokens[3], tokens[5]].map(&:to_i)
   
-  items = stacks[move[1]].shift(move[0])
-  stacks[move[2]].prepend items
-  stacks[move[2]].flatten!
+  items = stacks[src].shift(n)
+  stacks[dst] = items + stacks[dst]
 end
 
 stacks, moves = File.read('input/day_5.txt').split("\n\n").map { |x| x.split("\n") }
