@@ -18,7 +18,7 @@
 # end
 
 # # convert raw input into array of array of ranges
-# # e.g. "83-83,45-82" -> ['83-83', '45-82'] -> ['83'..'83', '45'..'82'] 
+# # e.g. "83-83,45-82" -> ['83-83', '45-82'] -> ['83'..'83', '45'..'82']
 # pairs = File.read('input/day_4.txt').split("\n")
 
 # pairs.map! { |pair| pair.split(',') }
